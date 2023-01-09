@@ -1,0 +1,12 @@
+<p>comp2 works!{{data}}</p>
+<div *ngFor="let items of data">
+    <p>{{items.name}}</p>
+    <hr>
+    <p>{{items.city}}</p>
+    <hr>
+    <p>{{items.age}}</p>
+
+</div>
+<hr>
+<button (click)="passdata()" class="btn btn-success"> send data to comp1</button>
+

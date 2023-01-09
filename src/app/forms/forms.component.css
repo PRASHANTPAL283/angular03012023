@@ -1,0 +1,26 @@
+.card{
+    color:whitesmoke;
+    height:600px;
+}
+.child-card{
+background-color: rgb(43, 177, 43);
+height:100px;
+
+}
+.sub-card{
+    background-color: rgb(235, 230, 230);
+    height:600px;
+    color:black;
+}
+.form{
+    margin-left: 24px;
+    padding: 10px;
+    font-size: 20px;
+}.style1{
+    width:100%;
+    border:1px solid lightgray;
+}
+.style2{
+    width:100%;
+    border:1px solid red;
+}

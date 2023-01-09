@@ -1,0 +1,26 @@
+<app-comp6 (output)="receivedData($event)"></app-comp6>
+<hr>
+<input type="text" (keyup)="showSearchData($event)" class="form-control" placeholder="search data"/>
+<hr>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">City</th>
+        <th scopr="col">action</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let items of allusers">
+        <th scope="row">{{items.name}}</th>
+        <td>{{items.age}}</td>
+        <td>{{items.city}}</td>
+        
+
+       
+      </tr>
+     
+    </tbody>
+  </table>

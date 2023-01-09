@@ -1,0 +1,34 @@
+<hr>
+<button (click)="sendOutputData()" class="btn btn-success">sendData</button>
+<hr>
+<hr>
+<button (click)="getsum()" class="btn btn-danger">cal sum</button>
+<hr>
+<button (click)="showexecution()" class="btn btn-success">show execution</button>
+<hr>
+<button (click)="increase()" class="btn btn-success">increase</button>
+<hr>
+<button (click)="descrease()" class="btn btn-warning">descrese</button>
+<div class="row">
+    <div class="col-md-6">
+        <app-comp7 [values]="topproducts" #child>
+            <h1 class="header" #head >we have  of top products up to 70%</h1>
+            <a class="link" href="visit site">visit page</a>
+            <p class="p2">prashant is again</p>
+        </app-comp7>
+
+    </div>
+    <div class="col-md-6">
+      
+        <app-comp7 [values]="products">
+            <h1 class="header">we have products having 80% discount</h1>
+            <a class="link" href="visit site">seemore</a>
+            <p class="p1"> prahsnat is testing</p>
+        </app-comp7>
+       
+
+    </div>
+    <h1 #header1>view child testing</h1>
+
+</div>
+

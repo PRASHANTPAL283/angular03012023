@@ -1,0 +1,89 @@
+<h1>welcome to navbar</h1>
+<hr>
+<form [formGroup]="UserModel" (ngSubmit)="submitform()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input [class.is-invalid]="getName()?.invalid && getName()?.touched" type="text" class="form-control" formControlName="name" >
+      <div *ngIf="getName()?.invalid && getName().touched">
+        <strong *ngIf="getName()?.errors.required" style="color:red"> name is required!!</strong>
+        <strong *ngIf="getName()?.errors.minlength" style="color:red">min length should be 3</strong>
+
+      </div>
+     
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Age</label>
+      <input [class.is-invalid]="getAge()?.invalid && getAge()?.touched" type="text" class="form-control" formControlName="age" >
+      <div *ngIf="getAge()?.invalid && getAge()?.touched">
+        <strong *ngIf="getAge()?.errors.required" style="color:red"> age is required!!!</strong>
+        <strong *ngIf="getAge()?.errors.pattern" style="color:red">min age greater than equals to 18</strong>
+
+      </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">City</label>
+        <input [class.is-invalid]="getCity()?.invalid && getCity()?.touched" type="text" class="form-control" formControlName="city">
+        <div *ngIf="getCity()?.invalid && getCity()?.touched">
+            <strong *ngIf="getCity()?.errors?.required" style="color:red">city is required!!</strong>
+
+        </div>
+      </div>
+    
+    <button type="submit"  class="btn btn-primary">Submit</button>
+  </form>
+  <hr>
+  <input type="text" class="form-control" (keyup)="getSearchResult($event)"  />
+<div *ngIf="allusers.length>0; else nousers">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">City</th>
+        <th scopr="col">action</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let items of allusers">
+        <th *ngIf="items.name!==''|| items.name!==null" scope="row">{{items.name}}</th>
+        <td *ngIf="items.age!==0|| items.age!==null">{{items.age| age}}</td>
+        <td *ngIf="items.name!==''|| items.name!==null">{{items.city}}</td>
+        
+<td><button (click)="shifttocomp1(items?.age)" class="btn btn-success">shift to comp1</button></td>
+<td><button class="btn btn-danger" (click)="removeItems(items?.age)">delete</button></td>
+       
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+<ng-template #nousers>
+  <p style="background-color:red;color:black;font-size: 20px;">something went wron..</p>
+
+</ng-template>
+<hr>
+<label class="form-label">select any user:</label>
+<select (change)="getselectedValue($event)" >
+  <option >select any user</option>
+  <option *ngFor="let items of allusers" [value]="items?.name">{{items.name}}</option>
+
+</select>
+<hr>
+<div [ngSwitch]="selectedData">
+  <div class="jumbotron" *ngSwitchCase="'sunny pal'">
+    <p style="font-size:20px;background-color: grey;">sunny pal is selected</p>
+  </div>
+  <div class="jumbotron" *ngSwitchCase="'karana'">
+    <p style="font-size:20px;background-color:lightgray;">karan is selected</p>
+  </div>
+  <div class="jumbotron" *ngSwitchDefault>
+    <p style="font-size:23px;background-color:red">no users selected</p>
+    
+
+  </div>
+</div>
+<hr>
+

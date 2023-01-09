@@ -1,0 +1,67 @@
+<a href="#x1">goonext</a>
+<div class="container">
+    <div class="card">
+        <div class="child-card">
+            <h1 style="margin-left:40px;padding-top: 10px;">Contact Form</h1>
+            <p style="margin-left:40px;padding-bottom:10px;">Please fill all the texts in the fields.</p>
+
+        </div>
+        <div class="sub-card">
+           <div [formGroup]="userModel" class="form">
+            <label class="form-label">Your Name:</label>
+            <div>
+                <input #name formControlName="name" [ngClass]="getName()?.invalid && getName()?.touched ? 'style2':'style1'" type="text" id="style1" name="name"/>
+                <div *ngIf="getName()?.invalid && getName()?.touched">
+                    <small style="color:red;"> name is required!!</small>
+
+                </div>
+            </div>
+            <div style="margin-top:24px;">
+            <label class="form-label">Your Email:</label>
+        </div>
+            <div>
+                <input #email  formControlName="email" type="email"  [ngClass]="getEmail()?.invalid && getEmail()?.touched ? 'style2':'style1'" name="email"/>
+                <div *ngIf="getEmail()?.invalid && getEmail()?.touched">
+                    <small *ngIf="getEmail()?.errors?.['required']" style="color:red;">Email is Required</small>
+                    <small *ngIf="getEmail()?.errors?.['email']" style="color:red">email should be valid</small>
+
+                </div>
+            </div>
+            <div style="margin-top:24px;">
+                <label class="form-label">Message:</label>
+            </div>
+                <div>
+                    <textarea #message formControlName="message"   [ngClass]="getMessage()?.invalid && getMessage()?.touched ? 'style2':'style1'" name="message"></textarea>
+                    <div *ngIf="getMessage()?.invalid && getMessage()?.touched">
+                        <small style="color:red;" *ngIf="getMessage()?.errors?.['required']">message should not be empty!!</small>
+
+                    </div>
+                </div>
+
+                <div style="margin-top:24px;">
+                    <label class="form-label">Subject:</label>
+                </div>
+                    <div>
+                        <input #subject formControlName="subject"  [ngClass]="getSubject()?.invalid && getSubject()?.touched ? 'style2':'style1'" type="text" id="style1" name="subject"/>
+                        <div *ngIf="getSubject()?.invalid && getSubject()?.touched">
+                            <small *ngIf="getSubject()?.errors?.['required']" style="color:red;">subject is required!!!</small>
+
+                        </div>
+                    </div>
+
+                   <div style="margin-top:24px;">
+                    <button (click)="sendData()" [disabled]="userModel.invalid" style="width:120px;padding: 10px;" class="btn btn-success">send</button>
+
+                   </div>
+                  
+    
+
+           </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
